@@ -39,7 +39,7 @@ public class BinaryClient {
 					.handler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
-							ch.pipeline().addLast("lengthFieldBasedFrameDecoder", new LengthFieldBasedFrameDecoder(1024,1, 1, 0,0));
+							ch.pipeline().addLast("lengthFieldBasedFrameDecoder", new LengthFieldBasedFrameDecoder(512, 2, 2, 0, 0));
 							ch.pipeline().addLast("message104Encoder",new BinaryEncoder());
 							ch.pipeline().addLast("message104ClientHandler",new BinaryClientHandler());
 						}
