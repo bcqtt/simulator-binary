@@ -3,6 +3,7 @@ package com.eg.egsc.scp.simulator.handler;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.eg.egsc.scp.simulator.common.MsgBytes;
 import com.eg.egsc.scp.simulator.util.ByteUtils;
 
 import io.netty.channel.ChannelHandlerAdapter;
@@ -16,11 +17,31 @@ public class BinaryClientHandler extends ChannelHandlerAdapter {
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		log.info("客户端(" + ctx.channel().localAddress() + ")启动连接");
-		byte[] data = {(byte)0x02,(byte)0x20,(byte)0x00,(byte)0x38,(byte)0x01,(byte)0x43,(byte)0x48,(byte)0x4A,(byte)0x2D,(byte)0x42,(byte)0x44,(byte)0x36,(byte)0x39,(byte)0x2D,(byte)0x32,(byte)0x31,(byte)0x35,(byte)0x2D,(byte)0x33,(byte)0x33,(byte)0x36,(byte)0x38,(byte)0x2D,(byte)0x32,(byte)0x30,(byte)0x31,(byte)0x39,(byte)0x30,(byte)0x33,(byte)0x30,(byte)0x36,(byte)0x2D,(byte)0x30,(byte)0x30,(byte)0x31,(byte)0x38,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x0D,(byte)0x0A};
+		
 		while(true) {
-			ctx.writeAndFlush(data);
-			log.info("客户端发出[启动连接消息]：消息长度:" + data.length + ",内容：" + ByteUtils.toHexString(data));
-			Thread.sleep(5000);
+//			ctx.writeAndFlush(MsgBytes.DEVICE_CODE_UPLOAD);
+//			log.info("客户端发出[上报机器编号]：消息长度:" + MsgBytes.DEVICE_CODE_UPLOAD.length + ",内容：" + ByteUtils.toHexString(MsgBytes.DEVICE_CODE_UPLOAD));
+//			Thread.sleep(3000);
+			
+//			ctx.writeAndFlush(MsgBytes.HEARTBEAT);
+//			log.info("客户端发出[心跳]：消息长度:" + MsgBytes.HEARTBEAT.length + ",内容：" + ByteUtils.toHexString(MsgBytes.HEARTBEAT));
+//			Thread.sleep(3000);
+			
+//			ctx.writeAndFlush(MsgBytes.DEVICE_STATUS_UPLOAD);
+//			log.info("客户端发出[设备状态]：消息长度:" + MsgBytes.DEVICE_STATUS_UPLOAD.length + ",内容：" + ByteUtils.toHexString(MsgBytes.DEVICE_STATUS_UPLOAD));
+//			Thread.sleep(3000);
+			
+//			ctx.writeAndFlush(MsgBytes.DEVICE_TEMP_CONFIG_RESULT);
+//			log.info("客户端发出[响应温度设置结果]：消息长度:" + MsgBytes.DEVICE_TEMP_CONFIG_RESULT.length + ",内容：" + ByteUtils.toHexString(MsgBytes.DEVICE_TEMP_CONFIG_RESULT));
+//			Thread.sleep(3000);
+			
+//			ctx.writeAndFlush(MsgBytes.DEVICE_LIGHT_CONFIG_RESULT);
+//			log.info("客户端发出[响应温度设置结果]：消息长度:" + MsgBytes.DEVICE_LIGHT_CONFIG_RESULT.length + ",内容：" + ByteUtils.toHexString(MsgBytes.DEVICE_LIGHT_CONFIG_RESULT));
+//			Thread.sleep(3000);
+
+			ctx.writeAndFlush(MsgBytes.DEVICE_GOODS_OUT_RESULT);
+			log.info("客户端发出[出货结果]：消息长度:" + MsgBytes.DEVICE_GOODS_OUT_RESULT.length + ",内容：" + ByteUtils.toHexString(MsgBytes.DEVICE_GOODS_OUT_RESULT));
+			Thread.sleep(3000);
 		}
 	}
 
