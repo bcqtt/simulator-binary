@@ -1,5 +1,6 @@
 package com.demo.netty;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import javax.xml.bind.DatatypeConverter;
@@ -41,5 +42,7 @@ public class StringTest {
 		String stationHex = DatatypeConverter.printHexBinary(stationAddr);
 		System.out.println(stationHex);
 	}
+
+
 
 }

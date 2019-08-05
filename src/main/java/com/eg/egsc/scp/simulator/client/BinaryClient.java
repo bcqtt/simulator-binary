@@ -1,5 +1,6 @@
 package com.eg.egsc.scp.simulator.client;
 
+import com.eg.egsc.scp.simulator.codec.ProtocolDecoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -39,7 +40,7 @@ public class BinaryClient {
 					.handler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
-							ch.pipeline().addLast("lengthFieldBasedFrameDecoder", new LengthFieldBasedFrameDecoder(512, 2, 2, 0, 0));
+							ch.pipeline().addLast("decoder", new ProtocolDecoder(512, 2, 2, -4, 0));
 							ch.pipeline().addLast("message104Encoder",new BinaryEncoder());
 							ch.pipeline().addLast("message104ClientHandler",new BinaryClientHandler());
 						}
