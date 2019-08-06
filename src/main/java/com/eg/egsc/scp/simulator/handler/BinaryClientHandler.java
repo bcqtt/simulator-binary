@@ -52,7 +52,7 @@ public class BinaryClientHandler extends ChannelHandlerAdapter {
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		ProtocolBody body = (ProtocolBody)msg;
-		log.info("收到的消息贞：" + body.toString());
+		log.info("收到响应贞：" + body.toString());
 
 	}
 
